@@ -4,7 +4,7 @@
 
 [Needleman–Wunsch algorithm - Wikipedia](https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm)
 
-<img src="https://raw.githubusercontent.com/LiangsLi/tuchuang/master/picgo/20220526172905.png" alt="image-20220526172905037" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/LiangsLi/tuchuang/master/picgo/20220526172905.png" alt="image-20220526172905037"  />
 
 ## 实现
 

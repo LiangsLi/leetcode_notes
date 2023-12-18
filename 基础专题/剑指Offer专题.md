@@ -130,7 +130,7 @@ class MinStack:
 
 ###### 解法二: 辅助栈法
 
-利用栈的先入后出的性质, 使用一个辅助栈完成. 先遍历一遍链表, 依次压入栈. 然后依次弹出栈顶, 并保存到数组, 此时即为原链表的逆序.
+利用栈的`先入后出`的性质, 使用一个辅助栈完成. 先遍历一遍链表, 依次压入栈. 然后依次弹出栈顶, 并保存到数组, 此时即为原链表的逆序.
 
 ```python
 class Solution:
@@ -488,7 +488,7 @@ class Solution:
 
 > 难度简单415
 >
-> 统计一个数字在排序数组中出现的次数。
+> 统计一个数字在**排序**数组中出现的**次数**。
 >
 > **示例 1:**
 >
@@ -558,7 +558,7 @@ class Solution:
 
 > 难度简单373
 >
-> 一个长度为`n-1`的递增排序数组中的所有数字都是唯一的，并且每个数字都在范围`0～n-1`之内。在范围`0～n-1`内的`n`个数字中**有且只有一个**数字不在该数组中，请找出这个数字。
+> 一个长度为`n-1`的**递增排序**数组中的所有数字都是唯一的，并且每个数字都在范围`0～n-1`之内。在范围`0～n-1`内的`n`个数字中**有且只有一个**数字不在该数组中，请找出这个数字。
 >
 >  **示例 1:**
 >
@@ -738,6 +738,56 @@ class Solution:
         return " "
 ```
 
+#### [136. 只出现一次的数字](https://leetcode.cn/problems/single-number/)
+
+> 难度简单2850
+>
+> 给你一个 **非空** 整数数组 `nums` ，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+>
+> 你必须设计并实现线性时间复杂度的算法来解决此问题，且该算法只使用常量额外空间。
+>
+>  **示例 1 ：**
+>
+> ```
+> 输入：nums = [2,2,1]
+> 输出：1
+> ```
+
+##### 分析
+
+本题和上一题 [剑指 Offer 50. 第一个只出现一次的字符](https://leetcode.cn/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/) 非常相似, 但是有几处不同:
+
++ 本题是在一个整数数组中找到唯一的只出现一次的**数字**;
++ 本题要求$O(n)$时间复杂度和$O(1)$的空间复杂度;
+
+上一题的解法虽然也可以求解本题, 但是无法满足对空间复杂度的要求, 由于本题是整数, 因此可以使用**位运算**解决.
+
+考虑异或(`x^y`)运算, 异或运算有三个性质:
+
++ 任何数和`0`做异或, 其结果仍是原来的数, 即: $a\oplus{0}=a$ ;
++ 任何数和其自身做异或, 其结果都是`0`, 即 $a\oplus{a}=0$
++ 异或运算满足`交换律`和`结合律`, 即 $a\oplus{b}\oplus{a}=b\oplus{a}\oplus{a}=b\oplus{(a\oplus{a})}=b\oplus{0}=b$
+
+现在假设数组中有`2m+1`个数字, 其中`m`个数字出现两次. 令 $a_1, ..., a_m$为出现了两次的`m`个数字, $a_{m+1}$为仅出现一次的数字. 根据上述性质3, 数组中所有数字做异或, 其结果等于:
+$$
+(a_1\oplus{a_1})\oplus{...}\oplus{(a_m\oplus{a_m})}\oplus{a_{m+1}}\\
+=0\oplus{...}\oplus{0}\oplus{a_{m+1}}\\
+=0\oplus{a_{m+1}} = a_{m+1}
+$$
+ 因此, 数组中的所有数字做异或运算, 其结果即为数组中仅出现一次的数字
+
+```python
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        # return reduce(lambda x, y: x ^ y, nums)
+        xor_res = 0
+        for x in nums:
+            xor_res = xor_res ^ x
+        return xor_res
+```
+
+
+
 ### D6. 搜索与回溯算法(简单)
 
 #### [剑指 Offer 32 - I. 从上到下打印二叉树](https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/)
@@ -899,7 +949,7 @@ class Solution:
 
 #### [剑指 Offer 26. 树的子结构](https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof/)
 
->难度中等740收藏分享切换为英文接收动态反馈
+>难度中等740
 >
 >输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)
 >
@@ -1368,7 +1418,7 @@ class Solution:
 
 > 难度中等580
 >
-> 请从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子字符串的长度。
+> 请从字符串中找出一个**最长的不包含重复字符的子字符串**，计算该最长子字符串的长度。
 >
 >  **示例 1:**
 >
@@ -1895,6 +1945,20 @@ class Solution:
 
 ### D18. 搜索与回溯算法(中等)
 
+#### [剑指 Offer 55 - I. 二叉树的深度](https://leetcode.cn/problems/er-cha-shu-de-shen-du-lcof/)
+
+> 难度简单241
+>
+> 输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。
+
+
+
+#### [剑指 Offer 55 - II. 平衡二叉树](https://leetcode.cn/problems/ping-heng-er-cha-shu-lcof/)
+
+> 难度简单354
+>
+> 输入一棵二叉树的根节点，判断该树是不是平衡二叉树。如果某二叉树中任意节点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。
+
 
 
 ### D19. 搜索与回溯算法(中等)
@@ -1936,30 +2000,104 @@ class Solution:
 >  1  3  -1  -3  5 [3  6  7]      7
 > ```
 
+##### 分析
 
+###### 解法一: 借助堆
+
+容易想到一种暴力解法: 用两个指针保存每个窗口内的$k$个元素, 每次都遍历窗口, 获取窗口内最大值. 如果数组长度为$n$, 则窗口的数量为`n-k+1`, 因此此种算法的复杂度为 $O((n-k+1)k)=O(nk)$. 显然这种方式不是最好的解法, 下面考虑优化: 
+
+由于需要实时获取滑动窗口内的最大值, 容易想到使用`最大堆`来存储窗口中的元素. 初始时, 将数组的前$k$个元素保存入`最大堆`, 每当窗口右移时, 我们将新的元素放入`最大堆`, 同时需要从堆中移除当前已不在窗口中的元素. 由于从堆中移除一个任意位置的元素复杂度较高,  最好的方式是移除堆顶元素. 因此我们将窗口内元素保存为一个元组, 即元素值和对应的索引. 当每次从堆中取出最大值时, 首先判断堆顶元素的索引是否在窗口内, 如否, 则弹出堆顶, 直到堆顶元素在窗口内为止.
+
+根据上述的分析, 当数组本身是一个单调升序数组时, 堆内需要保存数组全部的元素, 此时为最差时间复杂度. 此时在堆内插入元素的复杂度为$O(\log{n})$, 因此总的时间复杂度为 $O(n\log{n})$. 
+
+```python
+import heapq
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        max_heap = []
+        left = 1 - k
+        right = 0
+        res = []
+        while right < len(nums):
+            heapq.heappush(max_heap, (-1 * nums[right], right))
+            if left >= 0:
+                heap_top = max_heap[0]
+                while not left <= heap_top[1] <= right:
+                    heapq.heappop(max_heap)
+                    heap_top = max_heap[0]
+                res.append(-1 * heap_top[0])
+            right += 1
+            left += 1
+        return res
+```
+
+###### 解法二: 单调队列
+
+> `单调队列`是一种主要用于解决`滑动窗口`类问题的数据结构, 即在长度为`n`的序列中, 求每个长度为`m`的窗口区间的最值. 它的时间复杂度为 $O(n)$, 在此类问题中要优于`ST表`和`线段树`.
+>
+> [算法学习笔记(66): 单调队列 - 知乎](https://zhuanlan.zhihu.com/p/346354943)
+>
+> 单调队列使用`双端队列(deque)`实现, Python中的双端队列为`collections.deque`, 其主要操作包括:
+>
+> + `append(x)`: 添加元素`x`到队列右端;
+> + `appendleft(x)`: 添加元素`x`到队列左端;
+> + `pop()`: 弹出并返回队列右端元素;
+> + `popleft()`: 弹出并返回队列左端元素;
+
+单调队列的基本思想是维护一个`双端队列deque`, 遍历序列, 仅当一个元素有可能称为某个区间的最值时才保存它.
+
+例如, 有序列`[1,3,6,2,5,1,7]`, 现在窗口大小为`4`, 求每个窗口的最大值. 
+
+1. 一开始窗口内有四个元素, 注意此时前两个元素`1,3`小于第三个元素`6`, 因此它们两个不可能称为任意一个窗口的最值, 因此队列中仅保存`[6,2]`;
+
+<img src="https://raw.githubusercontent.com/LiangsLi/tuchuang/master/picgo/20230427101321.png" alt="image-20230427101313802" style="zoom:33%;" />
+
+2. 窗口右移, 此时新的元素`5`大于`2`, 且排在`2`的后面, 因此`2`也不可能成为任意一个窗口的最值, 因此将`2`弹出队列(`pop_back`), `5`压入队列, 此时队列中数据为`[6,5]`
+
+<img src="https://raw.githubusercontent.com/LiangsLi/tuchuang/master/picgo/20230427101750.png" alt="image-20230427101749849" style="zoom:33%;" />
+
+2. 窗口继续右移, 此时新的元素`1`虽然小于窗口内的其他元素, 但是其排在最后, 因此有可能称为后面窗口区间的最大值, 因此压入队列, 此时队列中的数据为`[6,5,1]`
+
+<img src="https://raw.githubusercontent.com/LiangsLi/tuchuang/master/picgo/20230427101822.png" alt="image-20230427101822241" style="zoom:33%;" />
+
+2. 窗口移动到尽头, 此时`6`不在窗口内, 弹出队列(`pop_front`). 且新的元素`7`比前面的窗口内元素都大, 故将队列内其他的元素都弹出(`pop_front`), 然后将`7`压入队列. 此时队列内数据为`[7]`
+
+<img src="https://raw.githubusercontent.com/LiangsLi/tuchuang/master/picgo/20230427101839.png" alt="image-20230427101839677" style="zoom:33%;" />
+
+观察就会发现，我们维护的这个队列总是`单调递减`的。如果维护区间最小值，那么维护的队列就是`单调递增`的。这就是为什么叫`单调队列`.
+
+总结来说, 我们使用单调队列解决这类问题, 遍历数组时, 保证单调队列`deque`满足:
+
+1. `deque`内仅保存当前窗口区间内的元素, 当窗口右移, 之前左边界的元素需要从`deque`中删除(此时是从队列**左侧弹出**);
+2. `deque`内的元素**非严格递减**, 每次保存新元素`x`(窗口右边界)之前, 需要将`deque`内小于`x`的元素全部弹出(此时是从队列**右侧弹出**);
 
 ```python
 import collections
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         deque = collections.deque()
-        res, n = [], len(nums)
-        for i, j in zip(range(1 - k, n + 1 - k), range(n)):
-            # 删除 deque 中对应的 nums[i-1]
-            if i > 0 and deque[0] == nums[i - 1]:
+        left = 1 - k
+        right = 0
+        res = []
+        while right < len(nums):
+            # 当窗口右移, 之前左边界的元素需要从`deque`中删除(此时是从队列**左侧弹出**)
+            if left > 0 and deque[0] == nums[left-1]:
                 deque.popleft()
-            # 保持 deque 递减
-            # queue[-1]返回最右侧值
-            while deque and deque[-1] < nums[j]:
+            # 每次保存新元素`x`(窗口右边界)之前, 
+            # 需要将`deque`内小于`x`的元素全部弹出(此时是从队列**右侧弹出**)
+            while deque and deque[-1] < nums[right]:
                 deque.pop()
-            deque.append(nums[j])
-            # 记录窗口最大值
-            if i >= 0:
+            deque.append(nums[right])
+            if left >= 0:
                 res.append(deque[0])
+            right += 1
+            left += 1
         return res
 ```
 
+时间复杂度: 双端队列`deque`两端压入和弹出操作的时间复杂度都为 $O(1)$, 因此整个时间复杂度为 $O(n)$;
 
+空间复杂度: `deque`最多有`k`个元素, 因此空间复杂度为 $O(k)$
 
 
 
@@ -1980,9 +2118,48 @@ class Solution:
 > 输出: [null,null,null,2,1,2]
 > ```
 
+##### 分析(借助双端队列)
 
+如下面的动图所示, 我们利用一个辅助双端队列`deque`来保存主队列`queue`中每一时刻的最大值.
+
++ `push_back`: 当新元素`x`压入主队列`queue`时, 将辅助队列`deque`右侧所有小于`x`的值全部弹出(从右侧弹出), 然后再将`x`也压入辅助队列`deque`;
++ `max_value`: 当获取当前最大值时, 直接返回辅助队列的最左侧元素即可;
++  `pop_front`: 当弹出主队列最左侧元素`y`时, 判断辅助队列最左侧元素是否等于`y`, 如果等于, 则同样弹出队列;
+
+<img src="https://raw.githubusercontent.com/LiangsLi/tuchuang/master/picgo/20230427131716.gif" alt="fig3.gif" style="zoom:50%;" />
 
 ```python
+import collections
+class MaxQueue:
+    def __init__(self):
+        # 主队列
+        self.queue = collections.deque()
+        # 辅助队列(必须是一个双端队列)
+        self.deque = collections.deque()
+
+    def max_value(self) -> int:
+        # 当获取当前最大值时, 直接返回辅助队列的最左侧元素即可;
+        return self.deque[0] if self.deque else -1
+
+    def push_back(self, value: int) -> None:
+        # 当新元素`x`压入主队列`queue`时, 
+        # 将辅助队列`deque`右侧所有小于`x`的值全部弹出(从右侧弹出), 
+        # 然后再将`x`也压入辅助队列`deque`;
+        self.queue.append(value)
+        while self.deque and self.deque[-1] < value:
+            self.deque.pop()
+        self.deque.append(value)
+
+    def pop_front(self) -> int:
+        # 当弹出主队列最左侧元素`y`时, 
+        # 判断辅助队列最左侧元素是否等于`y`, 
+        # 如果等于, 则同样弹出队列;
+        if not self.queue: 
+            return -1
+        val = self.queue.popleft()
+        if val == self.deque[0]:
+            self.deque.popleft()
+        return val
 ```
 
 
@@ -2034,7 +2211,9 @@ class Solution:
 > 解释: "a" 无法匹配 "aa" 整个字符串。
 > ```
 
+##### 分析
 
+> 本题和 [10. 正则表达式匹配](https://leetcode.cn/problems/regular-expression-matching/) 相同
 
 
 
