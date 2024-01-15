@@ -1,5 +1,16 @@
 # Sequence alignment algorithms
 
+<!--ts-->
+* [Sequence alignment algorithms](动态规划-SequenceAlignment.md#sequence-alignment-algorithms)
+   * [实现](动态规划-SequenceAlignment.md#实现)
+   * [实现参考](动态规划-SequenceAlignment.md#实现参考)
+   * [相关问题](动态规划-SequenceAlignment.md#相关问题)
+
+<!-- Created by https://github.com/ekalinin/github-markdown-toc -->
+<!-- Added by: huayongli, at: Mon Jan 15 20:06:26 CST 2024 -->
+
+<!--te-->
+
 [Sequence alignment - Wikipedia](https://en.wikipedia.org/wiki/Sequence_alignment#Global_and_local_alignments)
 
 [Needleman–Wunsch algorithm - Wikipedia](https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm)

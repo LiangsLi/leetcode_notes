@@ -2,6 +2,14 @@
 >
 > [数位 DP - OI Wiki](https://oi-wiki.org/dp/number/)
 
+<!--ts-->
+         * [<a href="https://leetcode.cn/problems/count-number-of-special-subsequences/" rel="nofollow">1955. 统计特殊子序列的数目</a>](数位DP.md#1955-统计特殊子序列的数目)
+
+<!-- Created by https://github.com/ekalinin/github-markdown-toc -->
+<!-- Added by: huayongli, at: Mon Jan 15 20:06:17 CST 2024 -->
+
+<!--te-->
+
 #### [1955. 统计特殊子序列的数目](https://leetcode.cn/problems/count-number-of-special-subsequences/)
 
 > 难度困难28

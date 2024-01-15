@@ -1,5 +1,14 @@
 > [树形 DP - OI Wiki](https://oi-wiki.org/dp/tree/)
 
+<!--ts-->
+         * [<a href="https://leetcode.cn/problems/sum-of-distances-in-tree/" rel="nofollow">834. 树中距离之和</a>](树形DP.md#834-树中距离之和)
+         * [<a href="https://leetcode.cn/problems/house-robber-iii/" rel="nofollow">337. 打家劫舍 III</a>](树形DP.md#337-打家劫舍-iii)
+
+<!-- Created by https://github.com/ekalinin/github-markdown-toc -->
+<!-- Added by: huayongli, at: Mon Jan 15 20:06:18 CST 2024 -->
+
+<!--te-->
+
 #### [834. 树中距离之和](https://leetcode.cn/problems/sum-of-distances-in-tree/)
 
 > 难度困难379
