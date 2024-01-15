@@ -10,8 +10,6 @@
 >
 > 返回长度为 `n` 的数组 `answer` ，其中 `answer[i]` 是树中第 `i` 个节点与所有其他节点之间的距离之和。
 
-
-
 #### [337. 打家劫舍 III](https://leetcode.cn/problems/house-robber-iii/)
 
 难度中等1637收藏分享切换为英文接收动态反馈

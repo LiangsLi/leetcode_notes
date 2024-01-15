@@ -12,15 +12,13 @@ C_{n} = \frac{1}{n+1}\tbinom{2n}{n} = \frac{(2n)!}{(n+1)!n!}
 $$
 递推公式为:
 $$
-C_0 = 1 \quad and \quad C_{n+1}=\frac{2(2n+1)}{n+2}C_{n} 
+C_0 = 1 \quad and \quad C_{n+1}=\frac{2(2n+1)}{n+2}C_{n}
 $$
-
 
 The first Catalan numbers for *n* = 0, 1, 2, 3, ... are
 $$
 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786,\dots
 $$
-
 
 ### 应用
 
@@ -40,5 +38,4 @@ $$
 
 + [96. 不同的二叉搜索树 - 力扣（LeetCode）](https://leetcode.cn/problems/unique-binary-search-trees/)
 
-+ 
-
++

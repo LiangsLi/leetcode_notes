@@ -88,16 +88,14 @@ std::vector<std::pair<char32_t, char32_t>> alignTextPair(
 }
 ```
 
-
-
-## 实现参考：
+## 实现参考
 
 + [needleman_wunsch_alignment.ipynb - Colaboratory](https://colab.research.google.com/github/zaneveld/full_spectrum_bioinformatics/blob/master/content/08_phylogenetic_trees/needleman_wunsch_alignment.ipynb)
 
 + [poke1024/pyalign: Fast and Versatile Alignments for Python](https://github.com/poke1024/pyalign)
 + [Martinsos/edlib: Lightweight, super fast C/C++ (& Python) library for sequence alignment using edit (Levenshtein) distance.](https://github.com/Martinsos/edlib)
 
-## 相关问题：
+## 相关问题
 
 + [Dynamic time warping (动态时间规整) - Wikipedia](https://en.wikipedia.org/wiki/Dynamic_time_warping)
 

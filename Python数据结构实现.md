@@ -10,11 +10,49 @@
 
 ### List
 
+The Average Case assumes parameters generated uniformly at random.
+
+Internally, a `list` is represented as an `array`; the largest costs come from growing beyond the current allocation size (because everything must move), or from inserting or deleting somewhere near the beginning (because everything after that must move). If you need to add/remove at both ends, consider using a collections.deque instead.
+
+| **Operation**                                                | **Average Case** | **[Amortized Worst Case](http://en.wikipedia.org/wiki/Amortized_analysis)** |
+| ------------------------------------------------------------ | ---------------- | ------------------------------------------------------------ |
+| Copy                                                         | O(n)             | O(n)                                                         |
+| Append[1]                                                    | O(1)             | O(1)                                                         |
+| Pop last                                                     | O(1)             | O(1)                                                         |
+| Pop intermediate[2]                                          | O(n)             | O(n)                                                         |
+| **Insert**                                                   | O(n)             | O(n)                                                         |
+| Get Item                                                     | O(1)             | O(1)                                                         |
+| Set Item                                                     | O(1)             | O(1)                                                         |
+| Delete Item                                                  | O(n)             | O(n)                                                         |
+| Iteration                                                    | O(n)             | O(n)                                                         |
+| Get Slice                                                    | O(k)             | O(k)                                                         |
+| Del Slice                                                    | O(n)             | O(n)                                                         |
+| Set Slice                                                    | O(k+n)           | O(k+n)                                                       |
+| Extend[1]                                                    | O(k)             | O(k)                                                         |
+| [Sort](http://svn.python.org/projects/python/trunk/Objects/listsort.txt) | O(n log n)       | O(n log n)                                                   |
+| Multiply                                                     | O(nk)            | O(nk)                                                        |
+| **x in s**                                                   | O(n)             |                                                              |
+| min(s), max(s)                                               | O(n)             |                                                              |
+| Get Length                                                   | O(1)             | O(1)                                                         |
+
 + [Python list implementation – Laurent Luce's Blog](http://www.laurentluce.com/posts/python-list-implementation/)
 
 + [arrays - How is Python's List Implemented? - Stack Overflow](https://stackoverflow.com/questions/3917574/how-is-pythons-list-implemented)
 
 ### Dict
+
+The Average Case times listed for dict objects assume that the hash function for the objects is sufficiently robust to make collisions uncommon. The Average Case assumes the keys used in parameters are selected uniformly at random from the set of all keys.
+
+Note that there is a fast-path for dicts that (in practice) only deal with str keys; this doesn't affect the algorithmic complexity, but it can significantly affect the constant factors: how quickly a typical program finishes.
+
+| **Operation** | **Average Case** | **Amortized Worst Case** |
+| ------------- | ---------------- | ------------------------ |
+| **k in d**    | O(1)             | O(n)                     |
+| Copy[3]       | O(n)             | O(n)                     |
+| Get Item      | O(1)             | O(n)                     |
+| Set Item[1]   | O(1)             | O(n)                     |
+| Delete Item   | O(1)             | O(n)                     |
+| Iteration[3]  | O(n)             | O(n)                     |
 
 + [data structures - How are Python's Built In Dictionaries Implemented? - Stack Overflow](https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented)
 
@@ -24,6 +62,19 @@
 + [How are deques in Python implemented, and when are they worse than lists? - Stack Overflow](https://stackoverflow.com/questions/6256983/how-are-deques-in-python-implemented-and-when-are-they-worse-than-lists)
 
 ### Set
+
+See `dict` -- the implementation is intentionally very similar.
+
+| **Operation**                     | **Average case**                                             | **Worst Case**                                | **notes**                                  |
+| --------------------------------- | ------------------------------------------------------------ | --------------------------------------------- | ------------------------------------------ |
+| **x in s**                        | O(1)                                                         | O(n)                                          |                                            |
+| Union s\|t                        | [O(len(s)+len(t))](https://wiki.python.org/moin/TimeComplexity_(SetCode)) |                                               |                                            |
+| Intersection s&t                  | O(min(len(s), len(t)))                                       | O(len(s) * len(t))                            | replace "min" with "max" if t is not a set |
+| Multiple intersection s1&s2&..&sn |                                                              | (n-1)*O(l) where l is max(len(s1),..,len(sn)) |                                            |
+| Difference s-t                    | O(len(s))                                                    |                                               |                                            |
+| s.difference_update(t)            | O(len(t))                                                    |                                               |                                            |
+| Symmetric Difference s^t          | O(len(s))                                                    | O(len(s) * len(t))                            |                                            |
+| s.symmetric_difference_update(t)  | O(len(t))                                                    | O(len(t) * len(s))                            |                                            |
 
 + [python - How is set() implemented? - Stack Overflow](https://stackoverflow.com/questions/3949310/how-is-set-implemented)
 

@@ -1,4 +1,4 @@
-> 
+>
 >
 > [数位 DP - OI Wiki](https://oi-wiki.org/dp/number/)
 

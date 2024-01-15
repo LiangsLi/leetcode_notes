@@ -4,11 +4,11 @@
 >
 > Trie(又称 字典树) 是一类 搜索树, 其可以用来保存字符串类型键值的动态集合或者映射字典.
 >
-> Unlike a [binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree), no node in the tree stores the key associated with that node; instead, its position in the tree defines the key with which it is associated; i.e., the value of the key is distributed across the structure. 
+> Unlike a [binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree), no node in the tree stores the key associated with that node; instead, its position in the tree defines the key with which it is associated; i.e., the value of the key is distributed across the structure.
 >
 > 与二叉搜索树不同, trie 树中的结点不直接保存其关联的值, 相反, 其使用结点在树中的位置来表示结点关联的值.
 >
-> All the **descendants** of a node have a common [prefix](https://en.wikipedia.org/wiki/Prefix) of the string associated with that node, and the root is associated with the [empty string](https://en.wikipedia.org/wiki/Empty_string). 
+> All the **descendants** of a node have a common [prefix](https://en.wikipedia.org/wiki/Prefix) of the string associated with that node, and the root is associated with the [empty string](https://en.wikipedia.org/wiki/Empty_string).
 >
 > 一个结点的所有后继节点都和该结点拥有同样的前缀, trie 的根节点为空字符串.
 >
@@ -24,8 +24,6 @@
 
 trie 树的名称来自于单词 "*retrieval*",  可以读作 "tree" 或者 "try".
 
-
-
 假设有 5 个字符串，它们分别是： him 、 her 、 cat 、 no 、 nova。则可以构造一个字典树如下:
 
 <img src="https://raw.githubusercontent.com/LiangsLi/tuchuang/master/picgo/20210113163827.jpg" alt="img" style="zoom: 50%;" />
@@ -34,8 +32,8 @@ trie 树的名称来自于单词 "*retrieval*",  可以读作 "tree" 或者 "try
 
 + 根节点不包含字符，其他节点包含一个字符。
 + 从根节点到某一节点经过的字符连接起来构成一个字符串。
-+  一个字符串与 Trie 树中的一条路径对应。
-+  在实现过程中，会在叶节点中设置一个标志，用来表示该节点是否是一个字符串的结尾，本例中用青色填充进行标记。
++ 一个字符串与 Trie 树中的一条路径对应。
++ 在实现过程中，会在叶节点中设置一个标志，用来表示该节点是否是一个字符串的结尾，本例中用青色填充进行标记。
 
 <img src="https://raw.githubusercontent.com/LiangsLi/tuchuang/master/picgo/20230421161450.png" alt="image-20230421161443558" style="zoom:50%;" />
 
@@ -47,10 +45,10 @@ trie 树的名称来自于单词 "*retrieval*",  可以读作 "tree" 或者 "try
 >
 > 请你实现 Trie 类：
 >
-> - `Trie()` 初始化前缀树对象。
-> - `void insert(String word)` 向前缀树中插入字符串 `word` 。
-> - `boolean search(String word)` 如果字符串 `word` 在前缀树中，返回 `true`（即，在检索之前已经插入）；否则，返回 `false` 。
-> - `boolean startsWith(String prefix)` 如果之前已经插入的字符串 `word` 的前缀之一为 `prefix` ，返回 `true` ；否则，返回 `false` 。
+> + `Trie()` 初始化前缀树对象。
+> + `void insert(String word)` 向前缀树中插入字符串 `word` 。
+> + `boolean search(String word)` 如果字符串 `word` 在前缀树中，返回 `true`（即，在检索之前已经插入）；否则，返回 `false` 。
+> + `boolean startsWith(String prefix)` 如果之前已经插入的字符串 `word` 的前缀之一为 `prefix` ，返回 `true` ；否则，返回 `false` 。
 >
 > **示例**:
 >
@@ -77,8 +75,6 @@ trie 树的名称来自于单词 "*retrieval*",  可以读作 "tree" 或者 "try
 > 1 <= word.length, prefix.length <= 2000
 > word 和 prefix 仅由小写英文字母组成
 > ```
-
-
 
 实现如下:
 
@@ -148,7 +144,7 @@ class Trie:
 >
 > 你需要输出替换之后的句子。
 >
->  **示例 1：**
+> **示例 1：**
 >
 > ```
 > 输入：dictionary = ["cat","bat","rat"], sentence = "the cattle was rattled by the battery"
@@ -171,8 +167,6 @@ class Trie:
 > 1 <= sentence.length <= 10^6
 > sentence 仅由小写字母和空格组成。
 > ```
-
-
 
 > 这里可以用上面的完整的字典树实现, 也可以使用字典实现一个简化版本的字典树, 此时每一个节点都是一个Dict, 而不是Trie节点.
 
@@ -203,4 +197,3 @@ class Solution:
                 curNode = curNode[c]
         return " ".join(words) 
 ```
-
